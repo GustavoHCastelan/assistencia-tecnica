@@ -32,4 +32,20 @@ public class Controller {
     public List<ClienteResponse> listar(){
         return service.listar();
     }
+
+    @DeleteMapping("/excluir/{id}")
+    public void excluir(@PathVariable Long id){
+        service.excluir(id);
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public ClienteResponse atualizar(@PathVariable Long id,
+                                     @RequestBody ClienteRequest dto){
+        return service.atualizar(id, dto);
+    }
+
+    @GetMapping("/pesquisar-email/{email}")
+    public ClienteResponse pesquisaPorEmail (@PathVariable String email){
+        return service.pesquisarPorEmail(email);
+    }
 }
